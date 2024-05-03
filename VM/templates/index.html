@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Console de Comandos</title>
+    <style>
+        /* Estilos CSS */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .command-input {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .command-input:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 5px #007bff;
+        }
+        .command-submit {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .command-submit:hover {
+            background-color: #0056b3;
+        }
+        .command-output {
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .command-log-item {
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+        .command-log-item:last-child {
+            border-bottom: none;
+        }
+        .command-log-item strong {
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Console de Comandos</h1>
+    
+    <!-- Formulário para enviar comandos -->
+    <form id="command-form" action="/" method="post">
+        <input type="text" id="command" name="command" class="command-input" placeholder="Digite um comando...">
+        <button type="submit" class="command-submit">Enviar</button>
+    </form>
+    
+    <!-- Output dos comandos -->
+    <div class="command-output">
+        {% for entry in command_log %}
+            <div class="command-log-item">
+                <strong>Comando:</strong> {{ entry.command }}<br>
+                <strong>Saída:</strong> {{ entry.output }}
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
